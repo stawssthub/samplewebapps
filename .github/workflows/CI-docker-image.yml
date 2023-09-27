@@ -1,0 +1,41 @@
+name: CI-Build-Push-Image-for-dotnet
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+ # this will allow to run workflow manually from the action tab.
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      -
+         name: d
+         uses: actions/checkout@v3
+      - 
+         name: Build the Docker image
+         uses: docker/setup-qemu-action@v1
+      -
+         name: set up Docker Buildx
+         uses: docker/setup-buildx-actiion@v1
+      - 
+         name: Login to DockerHub
+         uses: docker/login-action@v1
+         with:
+            username: ${{secrets.DOCKERHUB_USERNAME}}
+            password: ${{secrets.DOCKERHUB_TOKEN}}
+      -  
+         name: Build and Push
+         uses: docker/build-push-action@v2
+         with:
+            context: .
+            file: ./app
+            push: true
+            tags: ${{secrets.DOCKERHUB_USERNAME}}/dockerfordotnetapi:latest, ${{secrets.DOCKERHUB_USERNAME}}/dockerfordotnetapi:${{github.run_number}}
+   

@@ -6,7 +6,7 @@ COPY SampleWebApp/*.csproj .
 RUN dotnet restore
 
 # Copy everything else and build website
-COPY SampleWebApp/. .
+COPY ["SampleWebApp/.", "."]
 RUN dotnet publish -c release -o /WebApp --no-restore
 
 # Final stage / image

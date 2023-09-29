@@ -1,9 +1,9 @@
 name: CI_docker_build_push_acr-for-dotnet
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dckrazct" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dckrazct" ]
 
  # this will allow to run workflow manually from the action tab.
   workflow_dispatch:

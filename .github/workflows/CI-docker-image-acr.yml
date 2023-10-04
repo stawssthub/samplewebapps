@@ -1,9 +1,9 @@
-name: CI_docker_build_push_acr-for-dotnet
+name: CI_docker_compose_build_push_acr-for-dotnet
 on:
   push:
-    branches: [ "dckrazct" ]
+    branches: [ "dckrcmps" ]
   pull_request:
-    branches: [ "dckrazct" ]
+    branches: [ "dckrcmps" ]
 
  # this will allow to run workflow manually from the action tab.
   workflow_dispatch:
